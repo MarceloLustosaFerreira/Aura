@@ -1,0 +1,28 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <!--Criar atributo para aplicar a lógica no spinner-->
+    <aura:attribute name="spinner" type="boolean" default="false" />
+    <lightning:card title="Criar Entrega"><!--Corpo do Card - Estrutura pega nos Card em Salesforce-->
+        <!---->
+        <div class="slds-p-horizontal_small"><!--Começo criar bloco padrão igual do sales force com campos -->
+            <!--Começo do Formulário de ragistros - Pego no recordEditForm em Salesforce-->
+            <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Entrega__c" onsubmit="{!c.handleSubmit}" onsuccess="{!c.handleSuccess}"><!--Informar Objeto-->
+                <!--Abaixo estamos pegando o campo que já vai com o seu tipo e nome-->   
+                <lightning:inputField fieldName="Account__c" />
+                <lightning:inputField fieldName="Tipo_de_Entrega__c" />
+                <lightning:inputField fieldName="Prioridade__c" />
+                <lightning:inputField fieldName="Observacao__c" />
+                <lightning:button class="slds-m-top_small" type="submit" label="Criar Entrega" />
+                <!--Como esse botão está dentro do formulario e tem um submit nele criar um registro no objeto ligado-->   
+            </lightning:recordEditForm><!--Fim do formulário no Obj Entrega__c-->
+            
+        </div><!--Fim do bloco aproveitando a classe do card "slds-p-horizontal_small"-->
+        
+    </lightning:card><!--Fim do card-->
+    <!--Efeito de Spinner -  Loading no Salesforce-->
+    <!--Logica do spinner-->
+    <aura:if isTrue="{!v.spinner}">
+        <lightning:spinner alternativeText="Loading" size="medium" />
+    </aura:if> 
+    <!--Fim lógica do spinner-->
+    
+</aura:component>

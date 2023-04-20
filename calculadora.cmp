@@ -1,0 +1,47 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	   
+   	
+  	<aura:attribute name="num1" type="Integer"/>
+    <aura:attribute name="num2" type="Integer"/>
+    <aura:attribute name="num3" type="Integer"/><br/>   
+    <aura:attribute name="isAdd" type="Boolean" default="false"/>
+    <aura:attribute name="isSub" type="Boolean" default="false"/>
+    <aura:attribute name="isMul" type="Boolean" default="false"/>
+    <aura:attribute name="isDiv" type="Boolean" default="false"/>
+    <aura:attribute name="isRefresh" type="Boolean" default="false"/>
+    
+     <div class="slds-box slds-theme_shade">
+    <ui:inputNumber label="Number 1 " value="{!v.num1}"/><br/>
+    <ui:inputNumber label="Number 2 " value="{!v.num2}"/><br/>
+
+    <aura:if isTrue="{!v.isAdd}">
+       Adição de dois números :  {!num3}
+        <ui:outputNumber value="{!v.num3}"/>
+    </aura:if>
+     
+    <aura:if isTrue="{!v.isSub}">
+        Subtração de dois Números :  {!num3} 
+        <ui:outputNumber value="{!v.num3}"/>
+    </aura:if>
+     
+    <aura:if isTrue="{!v.isMul}">
+        multiplicação de dois números :  {!num3}
+        <ui:outputNumber value="{!v.num3}"/>
+    </aura:if>
+     
+    <aura:if isTrue="{!v.isDiv}">
+        Divisão de dois números :  {!num3}
+        <ui:outputNumber value="{!v.num3}"/>
+    </aura:if>
+    <br/>
+    <br/>
+    <ui:button press="{!c.addAction}" label="Adição" />
+    <aura:if isTrue="{!v.isRefresh}">
+        <ui:button press="{!c.refreshAction}" label="Refresh" />
+    </aura:if>
+    <ui:button press="{!c.substractionAction}" label="Subtração" />    
+    <ui:button press="{!c.multiplicationAction}" label="Multiplicação" />    
+    <ui:button press="{!c.divisionAction}" label="Divisão" />    
+</div>
+    
+</aura:component>
